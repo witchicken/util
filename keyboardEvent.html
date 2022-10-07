@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .box {
+        width: 100px;
+        height: 100px;
+        background-color: #fff700;
+        border: 5px solid orange;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box"></div>
+    <script>
+      //방향키 입력시마다 10px 이동
+
+      const $box = document.querySelector(".box");
+      //오프셋: 이동할 거리
+      const offset = { x: 0, y: 0 };
+      //keyboard eventhandler
+      const moving = {
+        offset: { x: 0, y: 0 },
+        gap: 10,
+        moveTop() {
+          offset.y = offset.y - this.gap;
+          $box.style.transform = `translate3d(${offset.x}px,${offset.y}px,0)`;
+        },
+        moveBottom() {
+          offset.y = offset.y + this.gap;
+          $box.style.transform = `translate3d(${offset.x}px,${offset.y}px,0)`;
+        },
+        moveLeft() {
+          offset.x = offset.x - this.gap;
+          $box.style.transform = `translate3d(${offset.x}px,${offset.y}px,0)`;
+        },
+        moveRight() {
+          offset.x = offset.x + this.gap;
+          $box.style.transform = `translate3d(${offset.x}px,${offset.y}px,0)`;
+        },
+      };
+      /*const move = () => {
+        offset.x = offset.x + 4;
+        offset.y = offset.y + 4;
+        $box.style.transform = `translate3d(${offset.x}px,${offset.y}px,0)`;
+      };*/
+      window.addEventListener("keydown", ({ key }) => {
+        switch (key) {
+          case "ArrowLeft":
+            moving.moveLeft();
+            break;
+          case "ArrowUp":
+            moving.moveTop();
+
+            break;
+          case "ArrowRight":
+            moving.moveRight();
+
+            break;
+          case "ArrowDown":
+            moving.moveBottom();
+
+            break;
+          default:
+        }
+      });
+    </script>
+  </body>
+</html>
