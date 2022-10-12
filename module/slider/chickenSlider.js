@@ -71,12 +71,11 @@
         item.style.padding = this.margin + "px";
       });
     }
-    appendPrevClone(cls) {
+    appendPrevClone() {
       const length = this.length; //7
       const realChild = this.realChild;
       for (let i = length - 1; i >= 0; i--) {
         const cloneSlide = realChild[i].cloneNode(true);
-        cloneSlide.classList.add(cls);
         this.viewer.prepend(cloneSlide);
       }
     }
@@ -173,7 +172,7 @@
     defaultBoxShadow
   );
   enigSlider.makeContainer();
-  enigSlider.appendPrevClone("12");
+  enigSlider.appendPrevClone();
   enigSlider.appendAfterClone();
   enigSlider.makeViewer();
   enigSlider.makeDirection();
